@@ -33,6 +33,12 @@ docker compose up -d
 
 ---
 
+Si se presenta un error de :
+```bash
+unable to get image 'bitnami/zookeeper:3': error during connect: Get "http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/v1.51/images/bitnami/zookeeper:3/json": open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
+```
+Es necesario iniciar el Docker Engine, abriendo el Docker Desktop es suficiente.
+
 ## 2) Compilar y empaquetar los servicios
 
 Desde la **raíz** del repo:
