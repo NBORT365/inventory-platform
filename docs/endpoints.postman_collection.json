@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "c564e857-1d6f-4897-88ec-fcc14424a1f0",
+		"name": "Endpoints prueba tecnica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20356430"
+	},
+	"item": [
+		{
+			"name": "order-service",
+			"item": [
+				{
+					"name": "Reserva Stock Servicio",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"qty\": 2}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/inventory/S1/items/SKU-1/reserve",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"inventory",
+								"S1",
+								"items",
+								"SKU-1",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirmacion Venta de Stock",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"holdId\": \"H-68d3741d-0273-4075-b3c4-43a3a1d414c0\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/inventory/S1/items/SKU-1/confirm",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"inventory",
+								"S1",
+								"items",
+								"SKU-1",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Liberacion Venta de Stock",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"holdId\":\"H-8ff9510e-3737-487a-bea6-09d7972815ad\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/inventory/S1/items/SKU-1/release",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"inventory",
+								"S1",
+								"items",
+								"SKU-1",
+								"release"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "inventory-service",
+			"item": [
+				{
+					"name": "inventory-service-admin",
+					"item": []
+				},
+				{
+					"name": "Check inventario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/inventory/S1/items/SKU-1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"inventory",
+								"S1",
+								"items",
+								"SKU-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New SKU",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"storeId\" : \"S1\",\r\n    \"itemId\" : \"SKU-2\",\r\n    \"available\" : 12\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/admin/newSKU",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"admin",
+								"newSKU"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sync-service",
+			"item": [
+				{
+					"name": "Show view",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/state/S1/SKU-1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"state",
+								"S1",
+								"SKU-1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

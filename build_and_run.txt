@@ -1,0 +1,9 @@
+mvn -q -DskipTests -pl order-service,inventory-service,sync-service -am clean package
+
+docker compose up -d
+
+Start-Process -FilePath "java" -ArgumentList '-jar order-service/target/order-service-0.0.1.jar --server.port=8081 --spring.kafka.bootstrap-servers=localhost:9092' -RedirectStandardOutput "logs/order-service.log" -NoNewWindow -PassThru | ForEach-Object { $_.Id | Out-File "logs/order-service.pid" -Encoding ascii }
+
+Start-Process -FilePath "java" -ArgumentList '-jar inventory-service/target/inventory-service-0.0.1.jar --server.port=8082 --spring.kafka.bootstrap-servers=localhost:9092' -RedirectStandardOutput "logs/inventory-service.log" -NoNewWindow -PassThru | ForEach-Object { $_.Id | Out-File "logs/inventory-service.pid" -Encoding ascii } 
+
+Start-Process -FilePath "java" -ArgumentList '-jar sync-service/target/sync-service-0.0.1.jar --server.port=8083 --spring.kafka.bootstrap-servers=localhost:9092 --inventory.api.base.url=http://localhost:8082' -RedirectStandardOutput "logs/sync-service.log" -NoNewWindow -PassThru | ForEach-Object { $_.Id | Out-File "logs/sync-service.pid" -Encoding ascii }
