@@ -1,7 +1,11 @@
 # Optimización de un Sistema Distribuido de Inventario
 
 Propusimos y prototipamos una arquitectura basada en **microservicios** con **event streaming (Kafka)** y un **patrón de reserva/confirmación** para evitar sobre‑ventas. El **Inventory Service** mantiene la verdad del stock (consistencia fuerte en operaciones críticas), el **Order Service** orquesta el ciclo de vida del pedido y la reserva, y el **Sync Service** simula la sincronización de tiendas hacia el centro. Priorizamos **consistencia** sobre disponibilidad para operaciones de stock.
-[Link al repositorio github](https://github.com/NBORT365/inventory-platform)
+
+[Link al repositorio github](https://github.com/NBORT365/inventory-platform).
+
+[Link al run.md](./docs/run.md).
+
 ---
 ## 1) Objetivo y alcance
 
