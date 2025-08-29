@@ -29,7 +29,7 @@ El prototipo incluye tres servicios ejecutables localmente y persistencia simula
 
 ### 3.1 Diagrama (alto nivel)
 
-![[Inventory_Diagram.jpg]]
+![img.png](docs/img.png)
 
 ### 3.2 Componentes
 
